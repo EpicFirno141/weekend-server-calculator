@@ -7,6 +7,7 @@ app.use(express.static('server/public'));
 app.use(express.json());
 
 let calculations = [];
+let result = {result: 0};
 
 // This is kind of a hunk of code... Does all the calculations, but loaded with conditionals
 // The reason being is that it checks operators with conditionals prior to calculating
@@ -30,6 +31,7 @@ function calculate(calc) {
                         divNum = divNum / Number(divCalc[i]);
                     }
                     console.log(divNum);
+                    result = {result: divNum};
                 }
             } 
             else if(calc.indexOf("-") >= 0 || calc.indexOf("+") >= 0 || calc.indexOf("/") >= 0) {
@@ -43,6 +45,7 @@ function calculate(calc) {
                     multNum = multNum * Number(num);
                 }
                 console.log('The answer is: ' + multNum);
+                result = {result: multNum};
             }
         } 
         else if(calc.indexOf("+") >= 0 || calc.indexOf("*") >= 0 || calc.indexOf("/") >= 0) {
@@ -56,6 +59,7 @@ function calculate(calc) {
                 subbedNum -= Number(subCalc[i]);
             }
             console.log('The answer is: ' + subbedNum);
+            result = {result: subbedNum};
         }
     }
     else if(calc.indexOf("-") >= 0 || calc.indexOf("*") >= 0 || calc.indexOf("/") >= 0) {
@@ -69,8 +73,19 @@ function calculate(calc) {
             addedNum += Number(num);
         }
         console.log('The answer is: ' + addedNum);
+        result = {result: addedNum};
     }
 }
+
+app.get('/result', (req, res) => {
+    res.send(result);
+    console.log('Sent result');
+});
+
+app.get('/calc', (req, res) => {
+    res.send(calculations);
+    console.log('Sent calculations');
+});
 
 app.post('/calc', (req, res) => {
     let newCalc = req.body;
@@ -79,8 +94,8 @@ app.post('/calc', (req, res) => {
     console.log(calculations);
     calculate(newCalc.calculation);
     res.sendStatus(201);
-})
+});
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT);
-})
+});
