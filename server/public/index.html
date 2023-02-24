@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Weekend Challenge #2</title>    
+    <title>Weekend Challenge #2</title>   
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <h1>Server Side Calculator</h1>
+    <div id="topDiv">
+        <h1>Server Side Calculator</h1>
+    </div>
     <div id="inputDiv">
         <input type="text" id="calculatorInput"><button onClick="clearInput(event)">C</button>
         <p>
@@ -16,7 +19,7 @@
         </p>
     </div>
     <div id='outputDiv'>
-        <h1 id="result"></h1>
+        <h2 id="result"></h2>
         <ol id="calculationList">
         </ol>
     </div>

@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 function addCharacter(event) {
     let value = event.target.innerHTML;
