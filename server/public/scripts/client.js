@@ -20,3 +20,7 @@ function submitCalculation(event) {
         console.log(error);
     });
 }
+
+function getAllCalculations() {
+    
+}
