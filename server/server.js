@@ -8,6 +8,9 @@ app.use(express.json());
 
 let calculations = [];
 
+// This is kind of a hunk of code... Does all the calculations, but loaded with conditionals
+// The reason being is that it checks operators with conditionals prior to calculating
+// It also checks for multiple operators within the same calculation and tells the server console if there are and then stops
 function calculate(calc) {
     console.log('This is calc: ' + calc);
     if(calc.indexOf("+") < 0) {
@@ -30,6 +33,11 @@ function calculate(calc) {
             else {
                 let multCalc = calc.split("*");
                 console.log(multCalc);
+                let multNum = 1;
+                for(let num of multCalc) {
+                    multNum = multNum * Number(num);
+                }
+                console.log('The answer is: ' + multNum);
             }
         } 
         else if(calc.indexOf("+") >= 0 || calc.indexOf("*") >= 0 || calc.indexOf("/") >= 0) {
