@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weekend Challenge #2</title>    
+  </head>
+  <body>
+    <h1>Server Side Calculator</h1>
+    <div id="inputDiv">
+        <input type="text" id="calculatorInput"><button onClick="clearInput(event)">C</button>
+        <p>
+            <button onClick="addCharacter(event)">7</button><button onClick="addCharacter(event)">8</button><button onClick="addCharacter(event)">9</button><button onClick="addCharacter(event)">+</button><br>
+            <button onClick="addCharacter(event)">4</button><button onClick="addCharacter(event)">5</button><button onClick="addCharacter(event)">6</button><button onClick="addCharacter(event)">-</button><br>
+            <button onClick="addCharacter(event)">1</button><button onClick="addCharacter(event)">2</button><button onClick="addCharacter(event)">3</button><button onClick="addCharacter(event)">*</button><br>
+            <button onClick="addCharacter(event)">0</button><button onClick="addCharacter(event)">.</button><button onClick="submitCalculation(event)">=</button><button onClick="addCharacter(event)">/</button>
+        </p>
+    </div>
+    <div id='outputDiv'>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+  </body>
+</html>
