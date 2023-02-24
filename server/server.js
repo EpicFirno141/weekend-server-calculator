@@ -38,6 +38,11 @@ function calculate(calc) {
         else {
             let subCalc = calc.split("-");
             console.log(subCalc);
+            let subbedNum = subCalc[0];
+            for (let i = 1; i<subCalc.length; i++) {
+                subbedNum -= Number(subCalc[i]);
+            }
+            console.log('The answer is: ' + subbedNum);
         }
     }
     else if(calc.indexOf("-") >= 0 || calc.indexOf("*") >= 0 || calc.indexOf("/") >= 0) {
