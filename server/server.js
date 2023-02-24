@@ -25,6 +25,11 @@ function calculate(calc) {
                 else {
                     let divCalc = calc.split("/");
                     console.log(divCalc);
+                    let divNum = divCalc[0];
+                    for(let i = 1; i<divCalc.length; i++) {
+                        divNum = divNum / Number(divCalc[i]);
+                    }
+                    console.log(divNum);
                 }
             } 
             else if(calc.indexOf("-") >= 0 || calc.indexOf("+") >= 0 || calc.indexOf("/") >= 0) {
