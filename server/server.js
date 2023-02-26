@@ -14,14 +14,25 @@ let result = {result: 0};
 // that I ended up copying was the regex for the split functions. I believe that
 // this function works correctly.
 function newCalculator(calculation) {
-    // Looks through calculation string and checks if it has multiplication
-    if(calculation.includes('*') === true) {
-        // Splits the string by parameters +, -, and / (leaving only the multiplication left)
-        let multSplit = calculation.split(/[+-/]+/);
+    console.log(calculation);
+    // Looks through calculation string and checks if it has multiplication OR division
+    if(calculation.includes('*') === true || calculation.includes('/') === true) {
+        // Looks if string has '/-----' where the dashes are any number of any length and puts them into an array
+        let regex = '\/[0-9]+';
+        let regArray = [...calculation.matchAll(regex)].flat();
+        for(let num of regArray) {
+            let noDivSign = num.slice(1);
+            // Takes each item in the array, removes the / and then turns it into a decimal 
+            let newNum = String(1/Number(noDivSign));
+            // Replaces all division with multiplication of decimals (3/2 -> 3*0.5)
+            calculation = calculation.replace(num, `*${newNum}`);
+        }
+        let multSplit = calculation.split(/[+-]+/);
         for(let num of multSplit) {
             // Goes through all items in multSplit and only takes the ones with multiplication
             if(num.includes('*')) {
                 let multiply = num.split('*');
+                console.log(multiply);
                 // Does multiplication here
                 let initMult = 1;
                 for(let numbers of multiply) {
