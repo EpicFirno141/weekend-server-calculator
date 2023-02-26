@@ -43,24 +43,6 @@ function newCalculator(calculation) {
             }
         }
     }
-    // Looks through calculation string and checks if it has division
-    if(calculation.includes('/') === true) {
-        // Splits the string by the parameters + and - (leaving only the division left)
-        let divSplit = calculation.split(/[+-]+/);
-        for(let num of divSplit) {
-            // Goes through all items in divSplit and only proceeds with the ones with division
-            if(num.includes('/')) {
-                let divide = num.split('/');
-                // Does division here
-                let initDiv = divide[0];
-                for(let i = 1; i<divide.length; i++) {
-                    initDiv = initDiv / Number(divide[i]);
-                }
-                // Replaces all division operations in calculation with the result of division.
-                calculation = calculation.replace(num, String(initDiv));
-            }
-        }
-    }
     // Checks if the calculation string has any + OR - operations
     if(calculation.includes('+') === true || calculation.includes('-') === true) {
         // Replaces all instances of - with +- (Effectively making them negative numbers that are added now)
